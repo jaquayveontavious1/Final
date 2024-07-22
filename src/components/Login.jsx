@@ -4,13 +4,14 @@ import {Icon} from 'react-icons-kit';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [username,setUsername] = useState('');
   const [password, setPassword] = useState("");
   const [message,setMessage] = useState('')
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+  const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -18,12 +19,16 @@ const Login = () => {
           username,
           password
         });
+        localStorage.setItem('token',response.data.token);
+        alert('Login Successful')
+        navigate('/profile')
         setMessage('Login Successful!!')
         
 
 
     } catch(error) {
       setMessage('Login failed please provide correct credentials')
+      console.error('Login failed ',{error})
     }
     
   }
@@ -44,12 +49,12 @@ const Login = () => {
         <div className='main w-4/12 ml-96 mt-32 bg-customClass'>
           <div className='container bg-white p-8 rounded shadow-md'>
             <div className='mb-4'>
-              <label for='username' className='block text-gray-700'>Username : </label>
+              <label htmlFor='username' className='block text-gray-700'>Username : </label>
               <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='username' id='username' className='w-full px-3 py-2 border rounded'></input>
             </div>
               
             <div className='mb-4'>
-              <label for='password' className='block text-gray-700'>Password : </label>
+              <label htmlFor='password' className='block text-gray-700'>Password : </label>
               <input type={type} name='password'value={password}onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' placeholder='password' id='password' className='w-full px-3 py-2 border rounded'/>
               <span className='flex justify-around items-center' onClick={handleToggle}>
                 <Icon className='absolute mr-9 ml-80 -mt-11' icon={icon} size={20}/>

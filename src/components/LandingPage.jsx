@@ -19,6 +19,7 @@ const LandingPage = () => {
             <div className='flex  space-x-4'>
                 <Link to='/signup' className='bg-customColor text-white px-6 py-3 rounded'>Sign Up</Link>
                 <Link to='/login' className='bg-customColor text-white px-6 py-3 rounded'>Login</Link>
+                <Link to='/profile' className='bg-customColor text-white px-6 py-3 rounded'>Profile</Link>
                 
 
 
