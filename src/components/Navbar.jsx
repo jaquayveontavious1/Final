@@ -6,7 +6,7 @@ import logo from '../assets/images/logo-to-use.jpg';
 const Navbar = () => {
     console.log('Logo path:', logo);
   return (
-    <nav className='container  bg-cyan-950 p-2 text-white flex justify-between items-center'>
+    <nav className='container  bg-customColor p-2 text-white flex justify-between items-center'>
        <div className='logo mb-1.5 ml-10'>
          <h2>
             <a href='#'>Express Travel Agency</a>
