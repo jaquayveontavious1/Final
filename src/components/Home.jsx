@@ -10,16 +10,24 @@ import GPS from '../assets/images/real-time.jpg'
 import SchoolIcon from '../assets/images/school.png'
 import Security from '../assets/images/security.jpg'
 import TicketView from '../assets/images/ticket-view.png'
+import Dreamline from '../assets/images/dreamline.jpeg'
+import EasyCoach from '../assets/images/easycoach.jpeg'
+import EldoretExpress from '../assets/images/eldoretexpress.jpeg'
+import Mash from '../assets/images/mash.png'
+import Scania from '../assets/images/scania.jpeg'
+import Tahmeed from '../assets/images/tahmeed.png'
+import ModernCoast from '../assets/images/moderncoast.jpeg'
+import Simba from '../assets/images/simba.jpg'
 const Home = () => {
   return (
     <div>
 
-        <div className='image  items-center '>
+        <div className='image bg-customColor text-white  items-center '>
             <div id='home-image'>
                 <img src={homePicture} className='mb-3' height={600} width={1300}  />
             </div>
             <div id='home-message' className='-mt-64 text-black'>
-                <h2><strong>Welcome To Express Travel</strong></h2>
+                <h2 className='text-white'><strong>Welcome To Express Travel</strong></h2>
                 
                 {/*<p>Experience seamless bus booking with real-time tracking, easy ticketing,<br/> secure payments, and detailed booking history.<br/> Join us for a hassle-free journey!</p>*/}
             </div>
@@ -49,7 +57,7 @@ const Home = () => {
 
                     </div>
                     <div id='school-icon' className='flex flex-col items-center m-4 mt-16'>
-                        <img src={SchoolIcon} alt='school-icon' width={200} height={200} />
+                        <Link to='/schools'><img src={SchoolIcon} alt='school-icon' width={200} height={200} /></Link>
                         <h3 className='mt-2' >Schools</h3>
 
                     </div>
@@ -66,7 +74,7 @@ const Home = () => {
 
                     </div>
                     <div id='security-view' className='flex flex-col items-center m-4'>
-                        <img src={Security} alt='security-view' width={200} height={200} />
+                        <Link to='/security'><img src={Security} alt='security-view' width={200} height={200} /></Link>
                         <h3>Security</h3>
 
                     </div>
@@ -79,6 +87,56 @@ const Home = () => {
                 </div>
                
 
+
+            </div>
+            <div className='mt-8'>
+                <h2 className='mt-2 p-2 text-center text-2xl'>In Partnership with: </h2>
+                <div className='flex flex-wrap    justify-center' >
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={Mash} alt='Mash' width={200} height={200} />
+
+                    </div>
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={Scania} alt='scania' width={200} height={200}  />
+
+                    </div>
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={Dreamline} alt='dreamline' width={200} height={200}  />
+
+                    </div>
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={EasyCoach} alt='easycoach' width={200} height={200}  />
+
+                    </div>
+
+
+                </div>
+                <div className='flex flex-wrap    justify-center' >
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={Tahmeed} alt='Tahmeed' width={200} height={200} />
+
+                    </div>
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={Simba} alt='Simba' width={200} height={200}  />
+
+                    </div>
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={ModernCoast} alt='moderncoast' width={200} height={200}  />
+
+                    </div>
+                    <div className='flex flex-col items-center m-4'>
+                        <img src={EldoretExpress} alt='EldoretExpress' width={200} height={200}  />
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div className='mt-6'>
+                <p>Copyright. All rights reserved</p>
 
             </div>
           

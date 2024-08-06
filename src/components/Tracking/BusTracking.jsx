@@ -46,7 +46,7 @@ const BusTracking = () => {
                
             >
                 <Popup>
-                    <h3>Bus : {location.bus.bus_number}</h3>
+                    <h3>Bus : {location.bus?.bus_number}</h3>
                 </Popup>
             </Marker>
         ))

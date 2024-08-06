@@ -7,7 +7,7 @@ const BookingRoutes = () => {
     
     const [routes,setRoutes] = useState([])
     const [currentPage,setCurrentPage] = useState(1)
-    const [searchTerm,setSearchTerm] = useState('')
+    
     const [totalPages,setTotalPages] = useState(1)
     const [loading,setLoading] = useState(true)
     const [selectedRoute,setSelectedRoute] = useState('')
@@ -30,29 +30,19 @@ const BookingRoutes = () => {
         fetchRoutes(currentPage)
     },[currentPage])
 
-    const filteredRoutes = routes.filter(route => 
-        route.starting_location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        route.final_destination.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+   
 
-
-    const handleRouteSelect = (routeNumber) => {
-            setSelectedRoute(routeNumber)
-            console.log('Selected route :',{routeNumber})
-            
-    }
-    const handleButtonClick = () => {
-        if (selectedRoute) {
-            navigate(`/select-bus/${selectedRoute}`)
-        } else {
-            console.error('Error fetching selected error')
-        }
-    }
+    
+   
     const handlePageChange = (page) => {
         if (page > 0 && page <= totalPages) {
             setCurrentPage(page)
         }
 
+    }
+    const handleBookClick = (routes) => {
+        setSelectedRoute(routes.route_number);
+        navigate(`/buses/${routes.route_number}`)
     } 
   return (
     <div className='p-4'>
@@ -60,7 +50,7 @@ const BookingRoutes = () => {
         <div className='grid grid-cols-5 gap-4 p-4'>
            
             {routes.map((route) => (
-                <div onChange={handleRouteSelect} key={route.route_number}className={`border border-gray-300 rounded-lg p-4 bg-white text-center ${selectedRoute === route.route_number ? 'border-blue-500' : ''}`}>
+                <div  key={route.route_number}className={`border border-gray-300 rounded-lg p-4 bg-white text-center ${selectedRoute === route.route_number ? 'border-blue-500' : ''}`}>
                     
                         <img src={route.image} alt='Route Image' className='w-full h-auto rounded-md mb-2' />
                         <h3 className='text-lg font-semibold mb-2'>Route Number : {route.route_number}</h3>
@@ -73,7 +63,7 @@ const BookingRoutes = () => {
                         <p className='text-sm mb-1'>Distance Covered : {route.distance_covered} </p>
                    
                    
-                        <button onClick={handleButtonClick} className='bg-cyan-950 rounded border w-24 text-white'>Book</button>
+                        <button onClick={() => handleBookClick(route)}  className='bg-cyan-950 rounded border w-24 text-white'>Book</button>
                    
                    
 

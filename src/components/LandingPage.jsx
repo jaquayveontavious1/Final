@@ -24,7 +24,7 @@ const LandingPage = () => {
             });
             localStorage.setItem('token', response.data.token);
             alert('Login Successful');
-            navigate('/profile');
+            navigate('/dashboard');
             console.log('Login Confirmed');
         } catch (error) {
             setMessage('Login failed! Please provide correct credentials');

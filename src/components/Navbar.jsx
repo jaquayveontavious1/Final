@@ -16,7 +16,7 @@ const Navbar = () => {
         <ul className='flex gap-4 cursor-pointer'>
           <li><a href='#'>Home</a></li>
           <Link to='/routes'><li>Bookings</li></Link>
-          <li><a href='#'>About Us</a></li>
+          <Link to='/about'><li>About Us</li></Link>
           <Link to='/buses'><li>Security</li></Link>
           <Link to='/schools'><li>Schools</li></Link>
 
