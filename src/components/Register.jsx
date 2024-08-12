@@ -1,44 +1,44 @@
 import React from 'react'
 import { useState } from 'react';
-import {Icon} from 'react-icons-kit';
+import { auth } from './Firebase';
 
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import videoSrc from '../assets/video/bus-station-video.mp4.mp4';
 const Register = () => {
-  const [username,setUsername] = useState()
+  //const [username,setUsername] = useState()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+  const [confirmPassword,setConfirmPassword] = useState('')
+  const [notice,setNotice] = useState('')
 
  
   const navigate = useNavigate()
 
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    try {
-      const response = await axios.post('http://127.0.0.1:8000/accounts/register/',{
-        username,
-        email,
-        password
-      });
-     
-      if (response.status === 201) {
-        const token = response.data.token
-        localStorage.setItem('authToken',token)
-        alert('Registration successful')
+  const handleRegister = async (e) => {
+    e.preventDefault(); //preventing the default behaviour of a form
+
+    if (password === confirmPassword) {
+      try {
+        await createUserWithEmailAndPassword(auth,email,password)
         navigate('/')
+
+      } catch (error) {
+        console.error("Sorry!! something went wrong. Please try again")
+        setNotice("Sorry. something went wrong. Pleasee try again")
       }
-      
-    } catch(error) {
-      
-      alert('Signup failed')
+    } else {
+      console.error('Sorry! Passwords do not match. Please make sure the passwords match')
       
     }
   }
+
+  
+  
+    
   
 
  
@@ -54,14 +54,11 @@ const Register = () => {
         </video>
       </div>
       {/**Registration Form */}
-      
+        {notice && notice}
         <div className='relative w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center items-center bg-black text-white'>
           <h2 className='text-white absolute top-0 mt-4 text-2xl'>Create an Account</h2>
-            <form onSubmit={handleSubmit}>
-              <div className='mb-4 flex'>
-                <label htmlFor='username' className='block text-white text-lg'>Username : </label>
-                <input type='text' placeholder='username' id='username' className='ml-6 w-72 border-rounded text-black' value={username} onChange={(e) => setUsername(e.target.value) }/>
-              </div>
+            <form onSubmit={handleRegister}>
+              
               <div className='mb-4 flex'>
                 <label htmlFor='email' className='block text-white text-lg'>Email: </label>
                 <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='example@gmail.com' id='email' className='text-black ml-16 border-rounded w-72'/>
@@ -69,6 +66,11 @@ const Register = () => {
               <div className='mb-4 flex'>
                 <label htmlFor='password' className='block text-white text-lg'>Password : </label>
                 <input type='password' name='password' value={password} placeholder='password'onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' id='password' className='text-black ml-10 border-rounded w-72'/>
+                
+              </div>
+              <div className='mb-4 flex'>
+                <label htmlFor='confirmpassword' className='block text-white text-lg'>Confirm Password : </label>
+                <input type='password' name='confirmpassword' value={confirmPassword} placeholder='confirmpassword'onChange={(e) => setConfirmPassword(e.target.value)} autoComplete='current-password' id='confirmpassword' className='text-black ml-10 border-rounded w-72'/>
                 
               </div>
               <button type='submit'  className='w-full bg-customColor text-black-300 py-2 rounded'>Register</button>
