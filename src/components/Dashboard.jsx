@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from './Navbar';
 import { useState } from 'react';
-
+import { AuthContext } from './Authentication/AuthContext';
 import Home from './Home';
+
 const Dashboard = () => {
-    
+  
   return (
     <div >
       
@@ -13,7 +14,7 @@ const Dashboard = () => {
            
             <Home  />
        </div>
-      
+       
 
 
     </div>

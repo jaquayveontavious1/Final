@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import newImage from '../assets/images/NEW.webp'
 import videoSrc from '../assets/video/bus-station-video.mp4.mp4';
 const Register = () => {
   //const [username,setUsername] = useState()
@@ -47,37 +48,37 @@ const Register = () => {
       {/**Video Section */}
        
           
-      <div className='w-full md:w-1/2 h-1/2 md:h-full'>
-        <video className='w-full h-full object-cover' autoPlay loop muted>
-          <source src={videoSrc} type='video/mp4' />
+      <div className='w-full md:w-2/3 h-2/3 md:h-full'>
+        <video className='w-full h-full object-cover' >
+          <source src={newImage} type='video/mp4' />
           <h2>Your Browser Does Not Support the Video Tag</h2>
         </video>
       </div>
       {/**Registration Form */}
         {notice && notice}
-        <div className='relative w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center items-center bg-black text-white'>
-          <h2 className='text-white absolute top-0 mt-4 text-2xl'>Create an Account</h2>
+        <div className='relative w-full md:w-1/3 h-1/3 md:h-full flex flex-col justify-center items-center bg-black text-white'>
+          <h2 className='text-white absolute top-4 mt-4 text-2xl'>Create an Account</h2>
             <form onSubmit={handleRegister}>
               
-              <div className='mb-4 flex'>
-                <label htmlFor='email' className='block text-white text-lg'>Email: </label>
-                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='example@gmail.com' id='email' className='text-black ml-16 border-rounded w-72'/>
+              <div className='mb-4 '>
+                <label htmlFor='email' className='block text-white text-lg'>Email : </label>
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='example@gmail.com' id='email' className='text-black ml-6 mt-2 h-8 rounded border w-72 border-rounded'/>
               </div>
-              <div className='mb-4 flex'>
+              <div className='mb-4 '>
                 <label htmlFor='password' className='block text-white text-lg'>Password : </label>
-                <input type='password' name='password' value={password} placeholder='password'onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' id='password' className='text-black ml-10 border-rounded w-72'/>
+                <input type='password' name='password' value={password} placeholder='Password'onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' id='password' className='text-black ml-6 mt-2 h-8 rounded border-rounded w-72'/>
                 
               </div>
-              <div className='mb-4 flex'>
+              <div className='mb-4 '>
                 <label htmlFor='confirmpassword' className='block text-white text-lg'>Confirm Password : </label>
-                <input type='password' name='confirmpassword' value={confirmPassword} placeholder='confirmpassword'onChange={(e) => setConfirmPassword(e.target.value)} autoComplete='current-password' id='confirmpassword' className='text-black ml-10 border-rounded w-72'/>
+                <input type='password' name='confirmpassword' value={confirmPassword} placeholder='Confirm Password'onChange={(e) => setConfirmPassword(e.target.value)} autoComplete='current-password' id='confirmpassword' className='text-black ml-6 mt-2 h-8 rounded border-rounded w-72'/>
                 
               </div>
               <button type='submit'  className='w-full bg-customColor text-black-300 py-2 rounded'>Register</button>
             </form>
-            <div className='mt-24'>
+            <div className='mt-32'>
               <hr />
-              <Link to='/'><h2>Already have an account ? <p className='text-cyan-700'>Login</p></h2></Link>
+              <Link to='/'><h3>Already have an account ? <h3 className='text-red'>Login</h3></h3></Link>
 
             </div>
           
